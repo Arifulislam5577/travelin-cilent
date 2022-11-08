@@ -3,7 +3,7 @@ import Layout from "../components/Layout";
 import Home from "../pages/Home/Home";
 import Login from "../pages/Login/Login";
 import SignIn from "../pages/SignIn/SignIn";
-import Profile from "../pages/Profile/Profile";
+import ServiceDetails from "../pages/ServiceDetails/ServiceDetails";
 import Blogs from "../pages/Blogs/Blogs";
 import Services from "../pages/Services/Services";
 
@@ -15,7 +15,7 @@ export const RootRoutes = createBrowserRouter([
       { index: true, element: <Home /> },
       { path: "/login", element: <Login /> },
       { path: "/signin", element: <SignIn /> },
-      { path: "/profile", element: <Profile /> },
+      { path: "/service/:id", element: <ServiceDetails /> },
       { path: "/blogs", element: <Blogs /> },
       { path: "/services", element: <Services /> },
     ],

@@ -1,5 +1,6 @@
 import React from "react";
 import { BsArrowRight } from "react-icons/bs";
+import { Link } from "react-router-dom";
 const ServiceCard = () => {
   return (
     <div className="col-span-1">
@@ -15,10 +16,13 @@ const ServiceCard = () => {
           <div className="flex items-center justify-between my-3">
             <h3 className=" text-sm text-gray-600">💰$997</h3>
             <h3 className=" text-sm text-gray-600">⭐4.5(4)</h3>
-            <button className="text-gray-600  hover:text-emerald-800 transition-all duration-300 hover:gap-2 gap-1 flex items-center text-sm">
+            <Link
+              to="/service/id"
+              className="text-gray-600  hover:text-emerald-800 transition-all duration-300 hover:gap-2 gap-1 flex items-center text-sm"
+            >
               details
               <BsArrowRight />
-            </button>
+            </Link>
           </div>
         </div>
       </div>

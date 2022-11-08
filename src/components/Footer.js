@@ -12,7 +12,7 @@ const Footer = () => {
           >
             <div className="flex items-center justify-center ">
               <img
-                src="images/travelin.svg"
+                src="/images/travelin.svg"
                 alt="logo"
                 className="w-full h-14"
               />

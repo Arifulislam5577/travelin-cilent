@@ -1,7 +1,7 @@
 import React from "react";
 import Pagination from "../../components/Pagination";
 import ServiceCard from "../../components/ServiceCard";
-
+import { Link } from "react-router-dom";
 const Services = () => {
   return (
     <div className="grid grid-cols-1 lg:grid-cols-4 gap-5 pt-10">
@@ -26,12 +26,13 @@ const Services = () => {
           <ServiceCard />
           <div className="lg:col-span-3 w-full text-center my-5 flex items-center justify-between">
             <Pagination />
-            <button
+            <Link
+              to="/services"
               className="text-sm text-white
           py-2 px-6 capitalize bg-emerald-800 rounded"
             >
               see all
-            </button>
+            </Link>
           </div>
         </div>
       </div>

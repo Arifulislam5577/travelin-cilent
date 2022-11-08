@@ -63,7 +63,7 @@ const SignIn = () => {
       </form>
 
       <div className="flex items-center justify-center">
-        <button className="flex items-center gap-2 text-sm text-gray-600 bg-gray-50 py-3 w-full rounded justify-center">
+        <button className="flex items-center gap-2 text-sm text-gray-600 bg-gray-200 py-3 w-full rounded justify-center">
           <FcGoogle /> SignIn with Google
         </button>
       </div>

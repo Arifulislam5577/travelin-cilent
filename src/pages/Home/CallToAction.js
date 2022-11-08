@@ -6,7 +6,7 @@ const CallToAction = () => {
       <div className="container mx-auto flex flex-col justify-center p-4 space-y-8 md:p-10 lg:space-y-0 lg:space-x-12 lg:justify-between lg:flex-row">
         <div className="flex flex-col space-y-4 text-center lg:text-left">
           <h1 className="lg:text-4xl text-3xl font-bold leading-none">
-            Stay in the loop
+            Stay with Travelin
           </h1>
           <p className="text-sm lg:max-w-md">
             Doloribus consectetur quasi ipsa quo neque culpa blanditiis ducimus

@@ -5,6 +5,7 @@ import Login from "../pages/Login/Login";
 import SignIn from "../pages/SignIn/SignIn";
 import Profile from "../pages/Profile/Profile";
 import Blogs from "../pages/Blogs/Blogs";
+import Services from "../pages/Services/Services";
 
 export const RootRoutes = createBrowserRouter([
   {
@@ -16,6 +17,7 @@ export const RootRoutes = createBrowserRouter([
       { path: "/signin", element: <SignIn /> },
       { path: "/profile", element: <Profile /> },
       { path: "/blogs", element: <Blogs /> },
+      { path: "/services", element: <Services /> },
     ],
   },
 ]);

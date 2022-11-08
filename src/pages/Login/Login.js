@@ -1,6 +1,8 @@
 import React from "react";
 import { Link } from "react-router-dom";
+import useTitle from "../../hooks/useTitle";
 const Login = () => {
+  useTitle("Login");
   return (
     <div className="login lg:w-2/6 md:w-3/6 sm:w-4/6 w-5/6 mx-auto my-10 bg-white p-10 rounded-md">
       <h1 className="text-2xl uppercase font-semibold  text-emerald-800">

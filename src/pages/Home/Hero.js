@@ -5,7 +5,7 @@ const Hero = () => {
     <div className="grid grid-cols-1 lg:grid-cols-2 gap-5 items-center py-20">
       <div>
         <p className="text-sm text-gray-600">Join the next tour</p>
-        <h1 className="text-4xl max-w-md font-bold mb-4">
+        <h1 className="lg:text-4xl text-3xl max-w-md font-bold mb-4">
           Exciting tours for adventurous people
         </h1>
         <p className="text-base max-w-lg text-gray-600">

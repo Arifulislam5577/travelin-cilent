@@ -4,14 +4,18 @@ const Footer = () => {
   return (
     <footer className="mt-auto pt-10 divide-y dark:bg-gray-800 dark:text-gray-100">
       <div className="container flex flex-col justify-between py-10 mx-auto space-y-8 lg:flex-row lg:space-y-0">
-        <div className="lg:w-1/3">
+        <div className="lg:w-1/3 w-full max-auto">
           <a
             rel="noopener noreferrer"
             href="#feature"
             className="flex justify-center space-x-3 lg:justify-start"
           >
-            <div className="flex items-center justify-center w-10 h-10 rounded-full ">
-              <img src="images/travelin.svg" alt="logo" />
+            <div className="flex items-center justify-center ">
+              <img
+                src="images/travelin.svg"
+                alt="logo"
+                className="w-full h-14"
+              />
             </div>
             <span className="self-center text-2xl font-semibold">Travelin</span>
           </a>
@@ -142,7 +146,7 @@ const Footer = () => {
         </div>
       </div>
       <div className="py-6 text-sm text-center dark:text-gray-400">
-        © 2022 Company Co. All rights reserved.
+        © 2022 Design by Md Ariful Islam. All rights reserved.
       </div>
     </footer>
   );

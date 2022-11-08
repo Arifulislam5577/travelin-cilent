@@ -5,8 +5,10 @@ const CallToAction = () => {
     <section className="py-6 my-10 rounded dark:bg-gray-800 dark:text-gray-50">
       <div className="container mx-auto flex flex-col justify-center p-4 space-y-8 md:p-10 lg:space-y-0 lg:space-x-12 lg:justify-between lg:flex-row">
         <div className="flex flex-col space-y-4 text-center lg:text-left">
-          <h1 className="text-4xl font-bold leading-none">Stay in the loop</h1>
-          <p className="text-sm max-w-md">
+          <h1 className="lg:text-4xl text-3xl font-bold leading-none">
+            Stay in the loop
+          </h1>
+          <p className="text-sm lg:max-w-md">
             Doloribus consectetur quasi ipsa quo neque culpa blanditiis ducimus
             recusandae a veritatis optio cumque, in harum ad nam!
           </p>

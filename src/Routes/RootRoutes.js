@@ -6,6 +6,9 @@ import SignIn from "../pages/SignIn/SignIn";
 import ServiceDetails from "../pages/ServiceDetails/ServiceDetails";
 import Blogs from "../pages/Blogs/Blogs";
 import Services from "../pages/Services/Services";
+import MyReview from "../pages/MyReview/MyReview";
+import AddService from "../pages/AddService/AddService";
+import UdpateReview from "../pages/MyReview/UdpateReview";
 
 export const RootRoutes = createBrowserRouter([
   {
@@ -18,6 +21,9 @@ export const RootRoutes = createBrowserRouter([
       { path: "/service/:id", element: <ServiceDetails /> },
       { path: "/blogs", element: <Blogs /> },
       { path: "/services", element: <Services /> },
+      { path: "/myreview", element: <MyReview /> },
+      { path: "/addservice", element: <AddService /> },
+      { path: "/updatereview/:id", element: <UdpateReview /> },
     ],
   },
 ]);

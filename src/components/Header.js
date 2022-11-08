@@ -53,7 +53,7 @@ const Header = () => {
           <li>
             <Link
               className="text-gray-600 hover:text-emerald-800 transition-all duration-100 hover:border-b-2 border-emerald-800 pb-2"
-              to="/blogs"
+              to="/addservice"
             >
               Add Service
             </Link>
@@ -61,7 +61,7 @@ const Header = () => {
           <li>
             <Link
               className="text-gray-600 hover:text-emerald-800 transition-all duration-100 hover:border-b-2 border-emerald-800 pb-2"
-              to="/blogs"
+              to="/myreview"
             >
               My Review
             </Link>
@@ -85,7 +85,7 @@ const Header = () => {
           <div
             className={`w-full sm:w-1/2 ${
               showMobileNav ? "translate-x-0" : "translate-x-full"
-            } duration-300 transition-all  fixed top-0 right-0 bg-gray-200 h-full`}
+            } duration-300 transition-all  fixed top-0 right-0 bg-gray-200 h-full z-10`}
           >
             <div className="flex items-center justify-between px-8 py-10">
               <Link
@@ -119,7 +119,7 @@ const Header = () => {
               <li>
                 <Link
                   className="text-gray-600 hover:text-emerald-800 transition-all duration-100 hover:border-b-2 border-emerald-800 pb-2"
-                  to="/blogs"
+                  to="/addservice"
                 >
                   Add Service
                 </Link>
@@ -127,7 +127,7 @@ const Header = () => {
               <li>
                 <Link
                   className="text-gray-600 hover:text-emerald-800 transition-all duration-100 hover:border-b-2 border-emerald-800 pb-2"
-                  to="/blogs"
+                  to="/myreview"
                 >
                   My Review
                 </Link>

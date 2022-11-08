@@ -1,4 +1,5 @@
 import React from "react";
+import Pagination from "../../components/Pagination";
 import ServiceCard from "../../components/ServiceCard";
 
 const Services = () => {
@@ -23,7 +24,8 @@ const Services = () => {
           <ServiceCard />
           <ServiceCard />
           <ServiceCard />
-          <div className="lg:col-span-3 w-full text-center my-5">
+          <div className="lg:col-span-3 w-full text-center my-5 flex items-center justify-between">
+            <Pagination />
             <button
               className="text-sm text-white
           py-2 px-6 capitalize bg-emerald-800 rounded"

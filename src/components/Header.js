@@ -63,7 +63,7 @@ const Header = () => {
           <li>
             <Link
               to="/login"
-              className="py-2 px-6 bg-emerald-800 hover:bg-emerald-900 text-white rounded flex items-center gap-1"
+              className="py-2 px-6 bg-emerald-800 hover:bg-emerald-900 text-white text-sm rounded flex items-center gap-1"
             >
               <FaSignInAlt size="12" />
               Login

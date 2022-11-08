@@ -1,7 +1,16 @@
 import React from "react";
+import Feature from "./Feature";
+import Hero from "./Hero";
 
 const Home = () => {
-  return <div>Home</div>;
+  return (
+    <section>
+      <div className="container">
+        <Hero />
+        <Feature />
+      </div>
+    </section>
+  );
 };
 
 export default Home;

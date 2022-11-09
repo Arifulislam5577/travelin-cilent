@@ -1,15 +1,16 @@
 import React from "react";
 import { BsStarFill } from "react-icons/bs";
-import { Link } from "react-router-dom";
+import { Link, useLoaderData } from "react-router-dom";
 import Review from "../../components/Review";
 
 const ServiceDetails = () => {
+  const { tour, tourReview } = useLoaderData();
   return (
     <section className="py-10">
       <div className="container grid grid-cols-1 lg:grid-cols-5 gap-5">
         <div className="lg:col-span-3 w-full ">
           <div>
-            <img src="/images/tour.jpg" alt="" className="rounded" />
+            <img src={tour.image} alt={tour.name} className="rounded" />
           </div>
         </div>
         <div className="lg:col-span-2">
@@ -22,12 +23,14 @@ const ServiceDetails = () => {
                 <BsStarFill />
                 <BsStarFill />
               </div>
-              <p>(12 Reviews)</p>
+              <p>({tourReview.length} Reviews)</p>
             </div>
             <h1 className="text-3xl font-bold text-gray-900 my-3">
-              The Forest Hiker
+              {tour.name}
             </h1>
-            <h2 className="text-3xl font-bold text-emerald-800">$499</h2>
+            <h2 className="text-3xl font-bold text-emerald-800">
+              ${tour.price}
+            </h2>
 
             <h2 className=" mt-5 font-bold text-gray-400">Feature</h2>
             <hr className="my-3" />
@@ -48,20 +51,7 @@ const ServiceDetails = () => {
           <div className="mb-5">
             <h2 className="text-xl font-bold text-gray-600">Description</h2>
             <hr className="my-3" />
-            <p className="text-justify text-gray-600">
-              Lorem, ipsum dolor sit amet consectetur adipisicing elit. Enim
-              accusamus sequi voluptas quibusdam aperiam sit non similique
-              consectetur vero excepturi. Placeat ad dignissimos molestiae,
-              facilis minus explicabo ex quo eos harum corporis officiis,
-              reiciendis ipsa earum quam! Est nobis cumque eos quod dicta! Odit
-              vero dolores molestias minus dolorum nulla ex commodi. Beatae
-              minus consequatur repudiandae hic nobis voluptatibus eos nam iusto
-              nostrum, ratione velit numquam asperiores distinctio veritatis.
-              Explicabo neque eos incidunt beatae? Expedita similique quia sed
-              consectetur excepturi doloremque dolorum esse libero alias qui et
-              unde nemo, beatae, fuga ipsa eos nesciunt dolores quam ullam quasi
-              repudiandae! Sed?
-            </p>
+            <p className="text-justify text-gray-600">{tour.description}</p>
           </div>
 
           <div className="my-5">
@@ -95,13 +85,19 @@ const ServiceDetails = () => {
           <div>
             <h2 className="text-xl font-bold text-gray-600">Review</h2>
             <hr className="my-3" />
-
-            <div className="my-3">
-              <Review />
-              <Review />
-              <Review />
-              <Review />
-            </div>
+            {tourReview.length > 0 ? (
+              <div className="my-3">
+                {tourReview?.map((review) => (
+                  <Review key={review._id} {...review} />
+                ))}
+              </div>
+            ) : (
+              <div className="my-3">
+                <h2 className="text-xl font-bold text-gray-600">
+                  ⚠️No review were added
+                </h2>
+              </div>
+            )}
           </div>
         </div>
       </div>

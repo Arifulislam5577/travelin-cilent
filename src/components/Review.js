@@ -1,13 +1,13 @@
 import React from "react";
 import { BsStarFill, BsReply } from "react-icons/bs";
 import { BiLike, BiDislike } from "react-icons/bi";
-const Review = () => {
+const Review = ({ userImg, reviewText, userName }) => {
   return (
     <figure className="flex flex-col md:flex-row md:items-center items-start gap-3 my-5">
       <div className="">
         <img
           src="/images/user.jpg"
-          alt=""
+          alt={userName}
           className="h-20 w-20 shadow rounded-full p-2 bg-white"
         />
       </div>
@@ -20,15 +20,11 @@ const Review = () => {
             <BsStarFill />
             <BsStarFill />
           </div>
-          <p className="text-gray-600 text-sm">Md Ariful Islam</p>
+          <p className="text-gray-600 text-sm">{userName}</p>
           <p className="text-gray-600 text-sm">2h ago</p>
         </div>
 
-        <p className="max-w-md my-2 text-gray-600 text-sm">
-          Lorem ipsum, dolor sit amet consectetur adipisicing elit. Rem,
-          nulla.Lorem ipsum, dolor sit amet consectetur adipisicing elit. Rem,
-          nulla.
-        </p>
+        <p className="max-w-md my-2 text-gray-600 text-sm">{reviewText}</p>
         <div className="flex items-center gap-4 text-sm">
           <p className="text-gray-600 flex items-center gap-1 cursor-pointer">
             <BiLike />

@@ -8,7 +8,7 @@ const ServiceCard = ({ name, image, description, price, rating, _id }) => {
         <img src={image} alt={name} className="block" />
 
         <div className="p-5">
-          <h1 className="font-bold text-xl text-gray-600">{name}</h1>
+          <h1 className="font-bold text-xl text-gray-600 capitalize">{name}</h1>
           <p className=" text-sm mt-2 text-gray-500">
             {description.length > 100 ? description.slice(0, 100) : description}
           </p>

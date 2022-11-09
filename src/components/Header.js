@@ -9,8 +9,11 @@ import {
 } from "react-icons/fa";
 import { FiTwitter } from "react-icons/fi";
 import { Link } from "react-router-dom";
+import { Context } from "../context/ContextApi";
 const Header = () => {
   const [showMobileNav, setShowMobileNav] = useState(false);
+  const { user, logOutUser } = Context();
+
   return (
     <header className=" bg-white">
       <div className="bg-emerald-800 py-1">
@@ -50,31 +53,52 @@ const Header = () => {
               Services
             </Link>
           </li>
-          <li>
-            <Link
-              className="text-gray-600 hover:text-emerald-800 transition-all duration-100 hover:border-b-2 border-emerald-800 pb-2"
-              to="/addservice"
-            >
-              Add Service
-            </Link>
-          </li>
-          <li>
-            <Link
-              className="text-gray-600 hover:text-emerald-800 transition-all duration-100 hover:border-b-2 border-emerald-800 pb-2"
-              to="/myreview"
-            >
-              My Review
-            </Link>
-          </li>
-          <li>
-            <Link
-              to="/login"
-              className="py-2 px-6 bg-emerald-800 hover:bg-emerald-900 text-white text-sm rounded flex items-center gap-1"
-            >
-              <FaSignInAlt size="12" />
-              Login
-            </Link>
-          </li>
+          {user ? (
+            <>
+              <li>
+                <Link
+                  className="text-gray-600 hover:text-emerald-800 transition-all duration-100 hover:border-b-2 border-emerald-800 pb-2"
+                  to="/addservice"
+                >
+                  Add Service
+                </Link>
+              </li>
+              <li>
+                <Link
+                  className="text-gray-600 hover:text-emerald-800 transition-all duration-100 hover:border-b-2 border-emerald-800 pb-2"
+                  to="/myreview"
+                >
+                  My Review
+                </Link>
+              </li>
+              <li>
+                <img
+                  src={user?.photoURL}
+                  className="h-10 w-10 rounded-full p-1 bg-gray-100 shadow"
+                  alt={user?.displayName}
+                />
+              </li>
+              <li>
+                <button
+                  className="py-2 px-6 bg-emerald-800 hover:bg-emerald-900 text-white text-sm rounded flex items-center gap-1"
+                  onClick={logOutUser}
+                >
+                  <FaSignInAlt size="12" />
+                  Logout
+                </button>
+              </li>
+            </>
+          ) : (
+            <li>
+              <Link
+                to="/login"
+                className="py-2 px-6 bg-emerald-800 hover:bg-emerald-900 text-white text-sm rounded flex items-center gap-1"
+              >
+                <FaSignInAlt size="12" />
+                Login
+              </Link>
+            </li>
+          )}
         </ul>
 
         <div className="md:hidden">
@@ -116,31 +140,53 @@ const Header = () => {
                   Services
                 </Link>
               </li>
-              <li>
-                <Link
-                  className="text-gray-600 hover:text-emerald-800 transition-all duration-100 hover:border-b-2 border-emerald-800 pb-2"
-                  to="/addservice"
-                >
-                  Add Service
-                </Link>
-              </li>
-              <li>
-                <Link
-                  className="text-gray-600 hover:text-emerald-800 transition-all duration-100 hover:border-b-2 border-emerald-800 pb-2"
-                  to="/myreview"
-                >
-                  My Review
-                </Link>
-              </li>
-              <li>
-                <Link
-                  to="/login"
-                  className="py-2 px-6 bg-emerald-800 hover:bg-emerald-900 text-white text-sm rounded flex items-center gap-1"
-                >
-                  <FaSignInAlt size="12" />
-                  Login
-                </Link>
-              </li>
+              {user ? (
+                <>
+                  <li>
+                    <Link
+                      className="text-gray-600 hover:text-emerald-800 transition-all duration-100 hover:border-b-2 border-emerald-800 pb-2"
+                      to="/addservice"
+                    >
+                      Add Service
+                    </Link>
+                  </li>
+                  <li>
+                    <Link
+                      className="text-gray-600 hover:text-emerald-800 transition-all duration-100 hover:border-b-2 border-emerald-800 pb-2"
+                      to="/myreview"
+                    >
+                      My Review
+                    </Link>
+                  </li>
+
+                  <li>
+                    <img
+                      src={user?.photoURL}
+                      className="h-10 w-10 rounded-full p-1 bg-gray-100 shadow"
+                      alt={user?.displayName}
+                    />
+                  </li>
+                  <li>
+                    <button
+                      className="py-2 px-6 bg-emerald-800 hover:bg-emerald-900 text-white text-sm rounded flex items-center gap-1"
+                      onClick={logOutUser}
+                    >
+                      <FaSignInAlt size="12" />
+                      Logout
+                    </button>
+                  </li>
+                </>
+              ) : (
+                <li>
+                  <Link
+                    to="/login"
+                    className="py-2 px-6 bg-emerald-800 hover:bg-emerald-900 text-white text-sm rounded flex items-center gap-1"
+                  >
+                    <FaSignInAlt size="12" />
+                    Login
+                  </Link>
+                </li>
+              )}
             </ul>
           </div>
         </div>

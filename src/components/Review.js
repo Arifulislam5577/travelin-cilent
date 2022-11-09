@@ -1,7 +1,11 @@
 import React from "react";
 import { BsStarFill, BsReply } from "react-icons/bs";
 import { BiLike, BiDislike } from "react-icons/bi";
-const Review = ({ userImg, reviewText, userName }) => {
+import TimeAgo from "javascript-time-ago";
+import en from "javascript-time-ago/locale/en";
+const Review = ({ userImg, reviewText, userName, createdAt }) => {
+  TimeAgo.addLocale(en);
+  const timeAgo = new TimeAgo("en-US");
   return (
     <figure className="flex flex-col md:flex-row md:items-center items-start gap-3 my-5">
       <div className="">
@@ -21,7 +25,9 @@ const Review = ({ userImg, reviewText, userName }) => {
             <BsStarFill />
           </div>
           <p className="text-gray-600 text-sm">{userName}</p>
-          <p className="text-gray-600 text-sm">2h ago</p>
+          <p className="text-gray-600 text-sm">
+            {timeAgo.format(new Date(createdAt))}
+          </p>
         </div>
 
         <p className="max-w-md my-2 text-gray-600 text-sm">{reviewText}</p>

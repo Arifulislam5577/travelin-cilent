@@ -3,15 +3,13 @@ import { BsFilter } from "react-icons/bs";
 import { GrPowerReset } from "react-icons/gr";
 import CardLoader from "../../components/CardLoader";
 import ServiceCard from "../../components/ServiceCard";
-import { Context } from "../../context/ContextApi";
 import useFetch from "../../hooks/useFetch";
 import useTitle from "../../hooks/useTitle";
 
 const Services = () => {
   useTitle("Services");
-  useFetch();
-  const { serviceState } = Context();
-  const { loading, error, services } = serviceState;
+  const { load, serviceError, serviceData } = useFetch();
+
   return (
     <section className="py-10">
       <div className="container">
@@ -28,7 +26,7 @@ const Services = () => {
             </div>
           </div>
           <div className="lg:col-span-3 w-full grid grid-cols-1 lg:grid-cols-3 gap-5">
-            {loading ? (
+            {load ? (
               <>
                 <CardLoader />
                 <CardLoader />
@@ -37,10 +35,10 @@ const Services = () => {
                 <CardLoader />
                 <CardLoader />
               </>
-            ) : error ? (
-              <h1>{error}</h1>
+            ) : serviceError ? (
+              <h1>{serviceError}</h1>
             ) : (
-              services?.map((service) => (
+              serviceData?.map((service) => (
                 <ServiceCard key={service._id} {...service} />
               ))
             )}

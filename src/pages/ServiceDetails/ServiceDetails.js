@@ -1,10 +1,14 @@
 import React from "react";
 import { BsStarFill } from "react-icons/bs";
-import { Link, useLoaderData } from "react-router-dom";
+import { Link, useLoaderData, useLocation } from "react-router-dom";
 import Review from "../../components/Review";
+import { Context } from "../../context/ContextApi";
 
 const ServiceDetails = () => {
+  const { user } = Context();
   const { tour, tourReview } = useLoaderData();
+  const location = useLocation();
+  console.log(location);
   return (
     <section className="py-10">
       <div className="container grid grid-cols-1 lg:grid-cols-5 gap-5">
@@ -55,32 +59,37 @@ const ServiceDetails = () => {
           </div>
 
           <div className="my-5">
-            <p className="hidden">
-              ⚠️Please{" "}
-              <Link
-                className="text-white bg-emerald-800 py-2 px-4 rounded"
-                to="/login"
-              >
-                Login
-              </Link>{" "}
-              first for add your valuable review
-            </p>
             <h2 className="text-xl font-bold text-gray-600">Add Review</h2>
             <hr className="my-3" />
-            <form className="w-full md:w-2/3">
-              <div className="mb-5">
-                <textarea
-                  className="block w-full mt-2 rounded p-5 focus:outline-none"
-                  name=""
-                  id="review"
-                  rows="3"
-                  placeholder="Enter your review"
-                ></textarea>
-              </div>
-              <button className="py-3 px-6 rounded text-white bg-emerald-800">
-                Submit
-              </button>
-            </form>
+            {user ? (
+              <>
+                <form className="w-full md:w-2/3">
+                  <div className="mb-5">
+                    <textarea
+                      className="block w-full mt-2 rounded p-5 focus:outline-none"
+                      name=""
+                      id="review"
+                      rows="3"
+                      placeholder="Enter your review"
+                    ></textarea>
+                  </div>
+                  <button className="py-3 px-6 rounded text-white bg-emerald-800">
+                    Submit
+                  </button>
+                </form>
+              </>
+            ) : (
+              <p className="my-5">
+                ⚠️Please{" "}
+                <Link
+                  className="text-white bg-emerald-800 py-2 px-4 rounded"
+                  to={`/login?redirect=${location.pathname}`}
+                >
+                  Login
+                </Link>{" "}
+                first for add your valuable review
+              </p>
+            )}
           </div>
           <div>
             <h2 className="text-xl font-bold text-gray-600">Review</h2>

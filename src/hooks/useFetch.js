@@ -1,30 +1,31 @@
-import { useEffect } from "react";
-import { Context } from "../context/ContextApi";
+import { useEffect, useState } from "react";
 
 const useFetch = (limit) => {
-  const { serviceDisPatch } = Context();
+  const [load, setLoad] = useState(false);
+  const [error, setError] = useState("");
+  const [data, setData] = useState([]);
   let path = "/api/v1/tours";
-
   if (limit) {
     path = `/api/v1/tours?limit=${limit}`;
   }
   useEffect(() => {
     const fetchService = async () => {
-      serviceDisPatch({ type: "SERVICE_FETCH_REQUEST" });
+      setLoad(true);
       try {
         const response = await fetch(path);
         const data = await response.json();
-        serviceDisPatch({ type: "SERVICE_FETCH_SUCCESS", payload: data });
+        setError("");
+        setData(data);
+        setLoad(false);
       } catch (error) {
-        serviceDisPatch({
-          type: "SERVICE_FETCH_FAILED",
-          payload: error.message,
-        });
+        setError(error.message);
       }
     };
 
     fetchService();
-  }, [serviceDisPatch, limit, path]);
+  }, [limit, path]);
+
+  return { load, serviceError: error, serviceData: data };
 };
 
 export default useFetch;

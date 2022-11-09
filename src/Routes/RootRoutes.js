@@ -10,6 +10,7 @@ import MyReview from "../pages/MyReview/MyReview";
 import AddService from "../pages/AddService/AddService";
 import UdpateReview from "../pages/MyReview/UdpateReview";
 import NotFound from "../pages/NotFound/NotFound";
+import PrivateRoute from "./PrivateRoutes";
 
 export const RootRoutes = createBrowserRouter([
   {
@@ -26,9 +27,30 @@ export const RootRoutes = createBrowserRouter([
       },
       { path: "/blogs", element: <Blogs /> },
       { path: "/services", element: <Services /> },
-      { path: "/myreview", element: <MyReview /> },
-      { path: "/addservice", element: <AddService /> },
-      { path: "/updatereview/:id", element: <UdpateReview /> },
+      {
+        path: "/myreview",
+        element: (
+          <PrivateRoute>
+            <MyReview />
+          </PrivateRoute>
+        ),
+      },
+      {
+        path: "/addservice",
+        element: (
+          <PrivateRoute>
+            <AddService />
+          </PrivateRoute>
+        ),
+      },
+      {
+        path: "/updatereview/:id",
+        element: (
+          <PrivateRoute>
+            <UdpateReview />
+          </PrivateRoute>
+        ),
+      },
       { path: "*", element: <NotFound /> },
     ],
   },

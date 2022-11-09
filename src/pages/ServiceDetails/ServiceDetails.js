@@ -8,7 +8,6 @@ const ServiceDetails = () => {
   const { user } = Context();
   const { tour, tourReview } = useLoaderData();
   const location = useLocation();
-  console.log(location);
   return (
     <section className="py-10">
       <div className="container grid grid-cols-1 lg:grid-cols-5 gap-5">

@@ -9,11 +9,7 @@ const ServiceDetails = () => {
       <div className="container grid grid-cols-1 lg:grid-cols-5 gap-5">
         <div className="lg:col-span-3 w-full ">
           <div>
-            <img
-              src="https://images.unsplash.com/photo-1518528057367-d8618b763ca0?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=804&q=80"
-              alt=""
-              className="rounded"
-            />
+            <img src="/images/tour.jpg" alt="" className="rounded" />
           </div>
         </div>
         <div className="lg:col-span-2">

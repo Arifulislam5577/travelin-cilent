@@ -2,7 +2,13 @@ import React from "react";
 import Pagination from "../../components/Pagination";
 import ServiceCard from "../../components/ServiceCard";
 import { Link } from "react-router-dom";
-const Services = () => {
+import useFetch from "../../hooks/useFetch";
+import { Context } from "../../context/ContextApi";
+import CardLoader from "../../components/CardLoader";
+const ServicesArea = () => {
+  useFetch(3);
+  const { serviceState } = Context();
+  const { loading, error, services } = serviceState;
   return (
     <div className="grid grid-cols-1 lg:grid-cols-4 gap-5 pt-10">
       <div className="lg:col-span-4 w-full pb-5">
@@ -21,9 +27,20 @@ const Services = () => {
       </div>
       <div className="lg:col-span-3 w-full ">
         <div className="grid grid-cols-1 lg:grid-cols-3 gap-5">
-          <ServiceCard />
-          <ServiceCard />
-          <ServiceCard />
+          {loading ? (
+            <>
+              <CardLoader />
+              <CardLoader />
+              <CardLoader />
+            </>
+          ) : error ? (
+            <h1>{error}</h1>
+          ) : (
+            services?.map((service) => (
+              <ServiceCard key={service._id} {...service} />
+            ))
+          )}
+
           <div className="lg:col-span-3 w-full text-center my-5 flex items-center justify-between">
             <Pagination />
             <Link
@@ -40,4 +57,4 @@ const Services = () => {
   );
 };
 
-export default Services;
+export default ServicesArea;

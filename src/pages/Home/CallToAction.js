@@ -18,7 +18,7 @@ const CallToAction = () => {
             <input
               type="text"
               placeholder="your@email.com"
-              className="w-3/5 p-3 rounded-l sm:w-2/3 placeholder:text-sm focus:outline-none"
+              className="w-3/5 p-3 text-gray-600 rounded-l sm:w-2/3 placeholder:text-sm focus:outline-none"
             />
             <button
               type="button"

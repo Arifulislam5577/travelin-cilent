@@ -20,7 +20,7 @@ const Hero = () => {
       </div>
       <div>
         <img
-          src="https://images.unsplash.com/photo-1475483768296-6163e08872a1?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=870&q=80"
+          src="/images/tour.jpg"
           alt="tour hero"
           className="rounded-tl-[10rem]"
         />

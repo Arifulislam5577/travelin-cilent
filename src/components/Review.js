@@ -6,7 +6,7 @@ const Review = () => {
     <figure className="flex flex-col md:flex-row md:items-center items-start gap-3 my-5">
       <div className="">
         <img
-          src="https://images.unsplash.com/profile-1619599632767-5db3071dc7cbimage?dpr=2&auto=format&fit=crop&w=150&h=150&q=60&crop=faces&bg=fff"
+          src="/images/user.jpg"
           alt=""
           className="h-20 w-20 shadow rounded-full p-2 bg-white"
         />

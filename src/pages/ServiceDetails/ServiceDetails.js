@@ -13,7 +13,7 @@ const ServiceDetails = () => {
       <div className="container grid grid-cols-1 lg:grid-cols-5 gap-5">
         <div className="lg:col-span-3 w-full ">
           <div>
-            <img src={tour.image} alt={tour.name} className="rounded" />
+            <img src={tour?.image} alt={tour?.name} className="rounded" />
           </div>
         </div>
         <div className="lg:col-span-2">
@@ -29,10 +29,10 @@ const ServiceDetails = () => {
               <p>({tourReview.length} Reviews)</p>
             </div>
             <h1 className="text-3xl font-bold text-gray-900 my-3">
-              {tour.name}
+              {tour?.name}
             </h1>
             <h2 className="text-3xl font-bold text-emerald-800">
-              ${tour.price}
+              ${tour?.price}
             </h2>
 
             <h2 className=" mt-5 font-bold text-gray-400">Feature</h2>
@@ -54,7 +54,7 @@ const ServiceDetails = () => {
           <div className="mb-5">
             <h2 className="text-xl font-bold text-gray-600">Description</h2>
             <hr className="my-3" />
-            <p className="text-justify text-gray-600">{tour.description}</p>
+            <p className="text-justify text-gray-600">{tour?.description}</p>
           </div>
 
           <div className="my-5">

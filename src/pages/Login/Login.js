@@ -4,6 +4,7 @@ import { Context } from "../../context/ContextApi";
 import useRedirect from "../../hooks/useRedirect";
 import useTitle from "../../hooks/useTitle";
 import { HandleError } from "../../utils/handleError";
+import handleJsonWebToken from "../../utils/handleJwt";
 const Login = () => {
   useTitle("Login");
   const redirect = useRedirect();
@@ -35,6 +36,7 @@ const Login = () => {
 
   useEffect(() => {
     if (user) {
+      handleJsonWebToken(user);
       navigate(redirect);
     }
   }, [redirect, user, navigate]);

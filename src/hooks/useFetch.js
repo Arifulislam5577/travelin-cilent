@@ -4,9 +4,9 @@ const useFetch = (limit) => {
   const [load, setLoad] = useState(false);
   const [error, setError] = useState("");
   const [data, setData] = useState([]);
-  let path = "/api/v1/tours";
+  let path = "https://travelin-server.vercel.app/api/v1/tours";
   if (limit) {
-    path = `/api/v1/tours?limit=${limit}`;
+    path = `https://travelin-server.vercel.app/api/v1/tours?limit=${limit}`;
   }
   useEffect(() => {
     const fetchService = async () => {

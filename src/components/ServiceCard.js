@@ -1,22 +1,26 @@
 import React from "react";
 import { BsArrowRight } from "react-icons/bs";
 import { Link } from "react-router-dom";
-const ServiceCard = ({ name, image, description, price, rating, _id }) => {
+const ServiceCard = (props) => {
   return (
     <div className="col-span-1">
       <div className="bg-white rounded overflow-hidden">
-        <img src={image} alt={name} className="block" />
+        <img src={props?.image} alt={props?.name} className="block" />
 
         <div className="p-5">
-          <h1 className="font-bold text-xl text-gray-600 capitalize">{name}</h1>
+          <h1 className="font-bold text-base text-gray-600 capitalize">
+            {props?.name}
+          </h1>
           <p className=" text-sm mt-2 text-gray-500">
-            {description.length > 100 ? description.slice(0, 100) : description}
+            {props?.description?.length > 100
+              ? props?.description?.slice(0, 100)
+              : props?.description}
           </p>
           <div className="flex items-center justify-between my-3">
-            <h3 className=" text-sm text-gray-600">💰${price}</h3>
-            <h3 className=" text-sm text-gray-600">⭐{rating}(4)</h3>
+            <h3 className=" text-sm text-gray-600">💰${props?.price}</h3>
+            <h3 className=" text-sm text-gray-600">⭐{props?.rating}(4)</h3>
             <Link
-              to={`/service/${_id}`}
+              to={`/service/${props?._id}`}
               className="text-gray-600  hover:text-emerald-800 transition-all duration-300 hover:gap-2 gap-1 flex items-center text-sm"
             >
               details

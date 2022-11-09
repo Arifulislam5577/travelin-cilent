@@ -2,13 +2,16 @@ import {
   createUserWithEmailAndPassword,
   onAuthStateChanged,
   signInWithEmailAndPassword,
+  signInWithPopup,
   signOut,
   updateProfile,
 } from "firebase/auth";
 import { createContext, useContext, useEffect, useState } from "react";
 import { auth } from "../auth/firebase.config";
+import { GoogleAuthProvider } from "firebase/auth";
 
 export const ContextProvider = createContext();
+const provider = new GoogleAuthProvider();
 
 const ContextApi = ({ children }) => {
   const [loader, setLoader] = useState(true);
@@ -32,12 +35,17 @@ const ContextApi = ({ children }) => {
   };
 
   const logOutUser = async () => {
+    localStorage.removeItem("token");
     return await signOut(auth);
   };
 
   const loginUser = async (email, password) => {
     setLoader(true);
     return await signInWithEmailAndPassword(auth, email, password);
+  };
+
+  const googleLogin = async () => {
+    return await signInWithPopup(auth, provider);
   };
 
   const userContext = {
@@ -47,6 +55,7 @@ const ContextApi = ({ children }) => {
     updateUser,
     logOutUser,
     loginUser,
+    googleLogin,
   };
 
   useEffect(() => {

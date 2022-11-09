@@ -5,11 +5,12 @@ import useTitle from "../../hooks/useTitle";
 import { Context } from "../../context/ContextApi";
 import { HandleError } from "../../utils/handleError";
 import useRedirect from "../../hooks/useRedirect";
+import handleJsonWebToken from "../../utils/handleJwt";
 const SignIn = () => {
   useTitle("Sign in");
   const redirect = useRedirect();
   const navigate = useNavigate();
-  const { updateUser, createUser, user } = Context();
+  const { updateUser, createUser, user, googleLogin } = Context();
   const [email, setEmail] = useState("");
   const [name, setName] = useState("");
   const [password, setPassword] = useState("");
@@ -39,6 +40,7 @@ const SignIn = () => {
 
   useEffect(() => {
     if (user) {
+      handleJsonWebToken(user);
       navigate(redirect);
     }
   }, [redirect, user, navigate]);
@@ -124,7 +126,10 @@ const SignIn = () => {
       </form>
 
       <div className="flex items-center justify-center">
-        <button className="flex items-center gap-2 text-sm text-gray-600 bg-gray-200 py-3 w-full rounded justify-center">
+        <button
+          className="flex items-center gap-2 text-sm text-gray-600 bg-gray-200 py-3 w-full rounded justify-center"
+          onClick={googleLogin}
+        >
           <FcGoogle /> SignIn with Google
         </button>
       </div>

@@ -26,7 +26,7 @@ const ServiceDetails = () => {
                 <BsStarFill />
                 <BsStarFill />
               </div>
-              <p>({tourReview.length} Reviews)</p>
+              <p>({tourReview ? tourReview?.length : 0} Reviews)</p>
             </div>
             <h1 className="text-3xl font-bold text-gray-900 my-3">
               {tour?.name}
@@ -93,10 +93,10 @@ const ServiceDetails = () => {
           <div>
             <h2 className="text-xl font-bold text-gray-600">Review</h2>
             <hr className="my-3" />
-            {tourReview.length > 0 ? (
+            {tourReview && tourReview?.length > 0 ? (
               <div className="my-3">
                 {tourReview?.map((review) => (
-                  <Review key={review._id} {...review} />
+                  <Review key={review?._id} {...review} />
                 ))}
               </div>
             ) : (

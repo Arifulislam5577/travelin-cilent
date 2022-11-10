@@ -1,5 +1,5 @@
 {
-  "proxy": "https://travelin-server.vercel.app",
+  "proxy": "http://localhost:5000",
   "name": "travelin-client",
   "version": "0.1.0",
   "private": true,

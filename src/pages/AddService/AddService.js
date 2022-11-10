@@ -18,7 +18,8 @@ const AddService = () => {
       try {
         setLoading(true);
         const response = await fetch(
-          "https://travelin-server.vercel.app/api/v1/tours",
+          // "https://travelin-server.vercel.app/api/v1/tours",
+          "/api/v1/tours",
           {
             method: "POST",
             body: JSON.stringify({

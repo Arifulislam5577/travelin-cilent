@@ -3,14 +3,15 @@ import { BsStarFill, BsReply } from "react-icons/bs";
 import { BiLike, BiDislike } from "react-icons/bi";
 import TimeAgo from "javascript-time-ago";
 import en from "javascript-time-ago/locale/en";
-const Review = ({ userImg, reviewText, userName, createdAt }) => {
+const Review = ({ UserImg, reviewText, userName, createdAt }) => {
   TimeAgo.addLocale(en);
   const timeAgo = new TimeAgo("en-US");
+
   return (
     <figure className="flex flex-col md:flex-row md:items-center items-start gap-3 my-5">
       <div className="">
         <img
-          src="/images/user.jpg"
+          src={UserImg}
           alt={userName}
           className="h-20 w-20 shadow rounded-full p-2 bg-white"
         />

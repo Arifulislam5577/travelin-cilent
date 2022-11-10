@@ -24,13 +24,13 @@ export const RootRoutes = createBrowserRouter([
         path: "/service/:id",
         element: <ServiceDetails />,
         loader: async ({ params }) =>
-          // fetch(`https://travelin-server.vercel.app/api/v1/tours/${params.id}`),
-          fetch(`/api/v1/tours/${params.id}`),
+          fetch(`https://travelin-server.vercel.app/api/v1/tours/${params.id}`),
       },
       { path: "/blogs", element: <Blogs /> },
       { path: "/services", element: <Services /> },
       {
         path: "/myreview",
+
         element: (
           <PrivateRoute>
             <MyReview />
@@ -47,6 +47,7 @@ export const RootRoutes = createBrowserRouter([
       },
       {
         path: "/updatereview/:id",
+
         element: (
           <PrivateRoute>
             <UdpateReview />

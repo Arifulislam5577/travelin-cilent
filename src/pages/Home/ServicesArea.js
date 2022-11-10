@@ -5,7 +5,9 @@ import { Link } from "react-router-dom";
 import useFetch from "../../hooks/useFetch";
 import CardLoader from "../../components/CardLoader";
 const ServicesArea = () => {
-  const { load, serviceError, serviceData } = useFetch(3);
+  const { load, error, data } = useFetch(
+    "https://travelin-server.vercel.app/api/v1/tours?limit=3"
+  );
   return (
     <div className="grid grid-cols-1 lg:grid-cols-4 gap-5 pt-10">
       <div className="lg:col-span-4 w-full pb-5">
@@ -30,10 +32,10 @@ const ServicesArea = () => {
               <CardLoader />
               <CardLoader />
             </>
-          ) : serviceError ? (
-            <h1>{serviceError}</h1>
+          ) : error ? (
+            <h1>{error}</h1>
           ) : (
-            serviceData?.map((service) => (
+            data?.map((service) => (
               <ServiceCard key={service._id} {...service} />
             ))
           )}

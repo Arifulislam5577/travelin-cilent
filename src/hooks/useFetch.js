@@ -1,20 +1,23 @@
 import { useEffect, useState } from "react";
 
-const useFetch = (limit) => {
+const useFetch = (url) => {
   const [load, setLoad] = useState(false);
   const [error, setError] = useState("");
   const [data, setData] = useState([]);
-  // let path = "https://travelin-server.vercel.app/api/v1/tours";
-  let path = "/api/v1/tours";
-  if (limit) {
-    // path = `https://travelin-server.vercel.app/api/v1/tours?limit=${limit}`;
-    path = `/api/v1/tours?limit=${limit}`;
-  }
+
   useEffect(() => {
     const fetchService = async () => {
       setLoad(true);
       try {
-        const response = await fetch(path);
+        const config = {
+          headers: {
+            "Content-type": "application/json; charset=UTF-8",
+            authorization: `Bearer ${JSON.parse(
+              localStorage.getItem("token")
+            )}`,
+          },
+        };
+        const response = await fetch(url, { ...config });
         const data = await response.json();
         setError("");
         setData(data);
@@ -25,9 +28,9 @@ const useFetch = (limit) => {
     };
 
     fetchService();
-  }, [limit, path]);
+  }, [url]);
 
-  return { load, serviceError: error, serviceData: data };
+  return { load, error, data };
 };
 
 export default useFetch;

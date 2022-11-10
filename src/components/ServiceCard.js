@@ -20,7 +20,7 @@ const ServiceCard = (props) => {
         </PhotoProvider>
 
         <div className="p-5">
-          <h1 className="font-bold text-base text-gray-600 capitalize">
+          <h1 className="font-bold text-base text-gray-600 uppercase">
             {props?.name}
           </h1>
           <p className=" text-sm mt-2 text-gray-500">

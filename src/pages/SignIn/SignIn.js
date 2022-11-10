@@ -112,7 +112,7 @@ const SignIn = () => {
         </p>
 
         {loading ? (
-          <button className="py-3 mb-5 w-full bg-gray-300 text-gray-900   transition-all duration-300 rounded">
+          <button className="py-3 w-full text-gray-900 text-sm rounded px-5 bg-gray-300  capitalize">
             Loading...
           </button>
         ) : (

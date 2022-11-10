@@ -1,6 +1,7 @@
-import React from "react";
+import React, { useState } from "react";
 import { BsStarFill } from "react-icons/bs";
 import { Link, useLoaderData, useLocation } from "react-router-dom";
+import { toast } from "react-toastify";
 import Review from "../../components/Review";
 import { Context } from "../../context/ContextApi";
 
@@ -8,6 +9,49 @@ const ServiceDetails = () => {
   const { user } = Context();
   const { tour, tourReview } = useLoaderData();
   const location = useLocation();
+  const [tourReviews, setTourReviews] = useState(tourReview);
+  const [description, setDescription] = useState("");
+  const [loading, setLoading] = useState(false);
+  const [error, setError] = useState("");
+
+  const handleSubmit = async (e) => {
+    e.preventDefault();
+
+    const createService = async () => {
+      try {
+        setLoading(true);
+        const response = await fetch(
+          `https://travelin-server.vercel.app/api/v1/review`,
+          {
+            method: "POST",
+            body: JSON.stringify({
+              tour: tour._id,
+              userId: user.uid,
+              userName: user.displayName,
+              UserImg: user.photoURL,
+              reviewText: description,
+            }),
+            headers: {
+              "Content-type": "application/json; charset=UTF-8",
+              authorization: `Bearer ${JSON.parse(
+                localStorage.getItem("token")
+              )}`,
+            },
+          }
+        );
+        const newReview = await response.json();
+        setTourReviews([newReview, ...tourReviews]);
+        setLoading(false);
+        setError("");
+        toast.success("Review created successfully");
+        setDescription("");
+      } catch (error) {
+        setLoading(false);
+        setError(error.message);
+      }
+    };
+    createService();
+  };
   return (
     <section className="py-10">
       <div className="container grid grid-cols-1 lg:grid-cols-5 gap-5">
@@ -26,7 +70,7 @@ const ServiceDetails = () => {
                 <BsStarFill />
                 <BsStarFill />
               </div>
-              <p>({tourReview ? tourReview?.length : 0} Reviews)</p>
+              <p>({tourReviews ? tourReviews?.length : 0} Reviews)</p>
             </div>
             <h1 className="text-3xl font-bold text-gray-900 my-3">
               {tour?.name}
@@ -60,21 +104,37 @@ const ServiceDetails = () => {
           <div className="my-5">
             <h2 className="text-xl font-bold text-gray-600">Add Review</h2>
             <hr className="my-3" />
+            {error && (
+              <p className="p-2 bg-red-200 text-gray-900 my-3 ">⚠️{error}</p>
+            )}
             {user ? (
               <>
-                <form className="w-full md:w-2/3">
+                <form className="w-full md:w-2/3" onSubmit={handleSubmit}>
                   <div className="mb-5">
                     <textarea
                       className="block w-full mt-2 rounded p-5 focus:outline-none"
                       name=""
                       id="review"
                       rows="3"
+                      required
+                      value={description}
+                      onChange={(e) => setDescription(e.target.value)}
                       placeholder="Enter your review"
                     ></textarea>
                   </div>
-                  <button className="py-3 px-6 rounded text-white bg-emerald-800">
-                    Submit
-                  </button>
+
+                  {loading ? (
+                    <button className="py-3 text-gray-900 text-sm rounded px-5 bg-gray-300  capitalize">
+                      Loading...
+                    </button>
+                  ) : (
+                    <button
+                      type="submit"
+                      className="py-3 text-white text-sm rounded px-5 bg-emerald-800 hover:bg-emerald-900 capitalize"
+                    >
+                      Submit
+                    </button>
+                  )}
                 </form>
               </>
             ) : (
@@ -93,9 +153,9 @@ const ServiceDetails = () => {
           <div>
             <h2 className="text-xl font-bold text-gray-600">Review</h2>
             <hr className="my-3" />
-            {tourReview && tourReview?.length > 0 ? (
+            {tourReviews && tourReviews?.length > 0 ? (
               <div className="my-3">
-                {tourReview?.map((review) => (
+                {tourReviews?.map((review) => (
                   <Review key={review?._id} {...review} />
                 ))}
               </div>

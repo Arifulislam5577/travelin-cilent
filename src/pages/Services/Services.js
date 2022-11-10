@@ -8,7 +8,9 @@ import useTitle from "../../hooks/useTitle";
 
 const Services = () => {
   useTitle("Services");
-  const { load, serviceError, serviceData } = useFetch();
+  const { load, error, data } = useFetch(
+    "https://travelin-server.vercel.app/api/v1/tours"
+  );
 
   return (
     <section className="py-10">
@@ -35,10 +37,10 @@ const Services = () => {
                 <CardLoader />
                 <CardLoader />
               </>
-            ) : serviceError ? (
-              <h1>{serviceError}</h1>
+            ) : error ? (
+              <h1>{error}</h1>
             ) : (
-              serviceData?.map((service) => (
+              data?.map((service) => (
                 <ServiceCard key={service._id} {...service} />
               ))
             )}

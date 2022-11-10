@@ -18,8 +18,7 @@ const AddService = () => {
       try {
         setLoading(true);
         const response = await fetch(
-          // "https://travelin-server.vercel.app/api/v1/tours",
-          "/api/v1/tours",
+          "https://travelin-server.vercel.app/api/v1/tours",
           {
             method: "POST",
             body: JSON.stringify({
@@ -122,13 +121,13 @@ const AddService = () => {
         </div>
 
         {loading ? (
-          <button className="py-3 mb-5 w-full bg-gray-300 text-gray-900   transition-all duration-300 rounded">
+          <button className="py-3 text-gray-900 text-sm rounded px-5 bg-gray-300  capitalize">
             Loading...
           </button>
         ) : (
           <button
             type="submit"
-            className="py-3 mb-5 w-full bg-emerald-800 text-white  hover:translate-y-1 hover:bg-emerald-900 transition-all duration-300"
+            className="py-3 mb-5 w-full bg-emerald-800 text-white  hover:translate-y-1 hover:bg-emerald-900 transition-all duration-300 rounded"
           >
             Create Service
           </button>

@@ -1,11 +1,23 @@
 import React from "react";
 import { BsArrowRight } from "react-icons/bs";
 import { Link } from "react-router-dom";
+import { PhotoProvider, PhotoView } from "react-photo-view";
+import "react-photo-view/dist/react-photo-view.css";
 const ServiceCard = (props) => {
   return (
     <div className="col-span-1">
       <div className="bg-white rounded overflow-hidden">
-        <img src={props?.image} alt={props?.name} className="block" />
+        <PhotoProvider>
+          <PhotoProvider>
+            <PhotoView src={props?.image}>
+              <img
+                src={props?.image}
+                alt={props?.name}
+                className="block cursor-pointer"
+              />
+            </PhotoView>
+          </PhotoProvider>
+        </PhotoProvider>
 
         <div className="p-5">
           <h1 className="font-bold text-base text-gray-600 capitalize">

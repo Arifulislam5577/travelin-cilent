@@ -40,7 +40,7 @@ const Services = () => {
             ) : error ? (
               <h1>{error}</h1>
             ) : (
-              data?.map((service) => (
+              data?.tours?.map((service) => (
                 <ServiceCard key={service._id} {...service} />
               ))
             )}

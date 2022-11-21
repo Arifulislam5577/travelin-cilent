@@ -51,6 +51,20 @@ const AddService = () => {
     createService();
   };
 
+  const previewImage = (file) => {
+    const reader = new FileReader();
+    reader.readAsDataURL(file);
+
+    reader.onloadend = () => {
+      setServiceImage(reader.result);
+    };
+  };
+
+  const handleImg = (e) => {
+    const selectedImg = e.target.files[0];
+    previewImage(selectedImg);
+  };
+
   return (
     <div className="lg:w-2/6 md:w-3/6 sm:w-4/6 w-5/6 mx-auto my-10 bg-white p-10 rounded-md">
       <h1 className="text-2xl uppercase font-semibold  text-emerald-800">
@@ -92,11 +106,10 @@ const AddService = () => {
             Service Image
           </label>
           <input
-            type="text"
+            type="file"
             id="img"
             required
-            value={serviceImage}
-            onChange={(e) => setServiceImage(e.target.value)}
+            onChange={(e) => handleImg(e)}
             placeholder="service image"
             className="block w-full bg-gray-100 px-5 py-3.5 focus:outline-none placeholder:text-sm placeholder:text-gray-400 rounded"
           />

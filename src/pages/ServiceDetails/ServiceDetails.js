@@ -1,6 +1,11 @@
 import React, { useState } from "react";
 import { BsStarFill } from "react-icons/bs";
-import { Link, useLoaderData, useLocation } from "react-router-dom";
+import {
+  Link,
+  useLoaderData,
+  useLocation,
+  useNavigate,
+} from "react-router-dom";
 import { toast } from "react-toastify";
 import Review from "../../components/Review";
 import { Context } from "../../context/ContextApi";
@@ -9,6 +14,7 @@ const ServiceDetails = () => {
   const { user } = Context();
   const { tour, tourReview } = useLoaderData();
   const location = useLocation();
+  const navigate = useNavigate();
   const [tourReviews, setTourReviews] = useState(tourReview);
   const [description, setDescription] = useState("");
   const [loading, setLoading] = useState(false);
@@ -52,6 +58,10 @@ const ServiceDetails = () => {
     };
     createService();
   };
+
+  const handleClick = () => {
+    navigate("/payment", { state: tour });
+  };
   return (
     <section className="py-10">
       <div className="container grid grid-cols-1 lg:grid-cols-5 gap-5">
@@ -89,7 +99,10 @@ const ServiceDetails = () => {
               <p>✅Free wifi services in hotel rooms</p>
             </div>
             <hr className="my-3" />
-            <button className="bg-emerald-800 hover:bg-emerald-900 text-white rounded py-3 px-6">
+            <button
+              onClick={handleClick}
+              className="bg-emerald-800 hover:bg-emerald-900 text-white rounded py-3 px-6"
+            >
               Join the tour
             </button>
           </div>

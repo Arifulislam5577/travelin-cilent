@@ -17,16 +17,18 @@ const AddService = () => {
     const createService = async () => {
       try {
         setLoading(true);
+
+        const tour = {
+          name: serviceName,
+          price: servicePrice * 1,
+          description: serviceDesc,
+          image: serviceImage,
+        };
         const response = await fetch(
           "https://travelin-server.vercel.app/api/v1/tours",
           {
             method: "POST",
-            body: JSON.stringify({
-              name: serviceName,
-              price: servicePrice,
-              description: serviceDesc,
-              image: serviceImage,
-            }),
+            body: JSON.stringify(tour),
             headers: {
               "Content-type": "application/json; charset=UTF-8",
               authorization: `Bearer ${JSON.parse(
@@ -35,7 +37,8 @@ const AddService = () => {
             },
           }
         );
-        await response.json();
+        const data = await response.json();
+        console.log(data);
         setLoading(false);
         setError("");
         toast.success("Service created success");
@@ -105,13 +108,13 @@ const AddService = () => {
           <label htmlFor="img" className="block mb-2 text-gray-500 text-sm">
             Service Image
           </label>
+
           <input
+            className="block w-full  text-sm text-gray-400 border  rounded cursor-pointer bg-gray-100 dark:text-gray-400 focus:outline-none px-5 py-3.5"
+            id="default_size"
             type="file"
-            id="img"
-            required
             onChange={(e) => handleImg(e)}
             placeholder="service image"
-            className="block w-full bg-gray-100 px-5 py-3.5 focus:outline-none placeholder:text-sm placeholder:text-gray-400 rounded"
           />
         </div>
         <div className="mb-5">
@@ -134,7 +137,7 @@ const AddService = () => {
         </div>
 
         {loading ? (
-          <button className="py-3 text-gray-900 text-sm rounded px-5 bg-gray-300  capitalize">
+          <button className="py-3 w-full text-gray-900 text-sm rounded px-5 bg-gray-300  capitalize">
             Loading...
           </button>
         ) : (

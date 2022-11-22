@@ -11,6 +11,7 @@ import AddService from "../pages/AddService/AddService";
 import UdpateReview from "../pages/MyReview/UdpateReview";
 import NotFound from "../pages/NotFound/NotFound";
 import PrivateRoute from "./PrivateRoutes";
+import Payment from "../pages/Payment/Payment";
 
 export const RootRoutes = createBrowserRouter([
   {
@@ -28,6 +29,14 @@ export const RootRoutes = createBrowserRouter([
       },
       { path: "/blogs", element: <Blogs /> },
       { path: "/services", element: <Services /> },
+      {
+        path: "/payment",
+        element: (
+          <PrivateRoute>
+            <Payment />
+          </PrivateRoute>
+        ),
+      },
       {
         path: "/myreview",
 

@@ -7,7 +7,7 @@ import CardLoader from "../../components/CardLoader";
 const ServicesArea = () => {
   const [page, setPage] = useState(1);
   const { load, error, data } = useFetch(
-    `https://travelin-server.vercel.app/api/v1/tours?limit=3&page=${page}`
+    `${process.env.REACT_APP_DOMAIN_NAME}/api/v1/tours?limit=3&page=${page}`
   );
 
   const pageNum = Math.ceil(data?.totalService / 3);

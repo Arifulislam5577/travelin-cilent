@@ -3,11 +3,10 @@ import { Link, Outlet } from "react-router-dom";
 import { Context } from "../../context/ContextApi";
 
 const Dashboard = () => {
-  const { user } = Context();
+  const { user, logOutUser } = Context();
 
   const dashboard = [
-    { id: 1, title: "Profile", path: "/dashboard" },
-    { id: 2, title: "Add Service", path: "/dashboard/addservice" },
+    { id: 2, title: "Add Service", path: "/dashboard" },
     { id: 3, title: "My Service", path: "/dashboard/myservice" },
     { id: 4, title: "My Review", path: "/dashboard/myreview" },
   ];
@@ -40,7 +39,7 @@ const Dashboard = () => {
                   ))}
 
                   <li className="text-sm hover:text-emerald-800 transition-all duration-500 hover:font-bold  hover:border-l-2 border-emerald-800 hover:pl-3 text-gray-600">
-                    <button>Logout</button>
+                    <button onClick={logOutUser}>Logout</button>
                   </li>
                 </ul>
               </div>

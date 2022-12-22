@@ -5,9 +5,9 @@ import TimeAgo from "javascript-time-ago";
 import en from "javascript-time-ago/locale/en";
 const Review = (props) => {
   const { UserImg, reviewText, userName, createdAt } = props;
+
   TimeAgo.addLocale(en);
   const timeAgo = new TimeAgo("en-US");
-
   return (
     <figure className="flex flex-col md:flex-row md:items-center items-start gap-3 my-5">
       <div className="">

@@ -1,27 +1,23 @@
 import React, { useEffect, useState } from "react";
-import { useNavigate, useParams } from "react-router-dom";
+import { useLocation, useNavigate } from "react-router-dom";
 import { toast } from "react-toastify";
-import useFetch from "../../hooks/useFetch";
 const UdpateReview = () => {
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState("");
   const [description, setDescription] = useState("");
 
-  const { id } = useParams();
   const navigate = useNavigate();
 
-  const { data } = useFetch(
-    `https://travelin-server.vercel.app/api/v1/review/${id}`
-  );
+  const { state } = useLocation();
 
   const handleSubmit = async (e) => {
     e.preventDefault();
 
-    const createService = async () => {
+    const updateReview = async () => {
       try {
         setLoading(true);
         const response = await fetch(
-          `https://travelin-server.vercel.app/api/v1/review/${data._id}`,
+          `${process.env.REACT_APP_DOMAIN_NAME}/api/v1/review/${state._id}`,
           {
             method: "PATCH",
             body: JSON.stringify({
@@ -39,21 +35,21 @@ const UdpateReview = () => {
         setLoading(false);
         setError("");
         toast.success("Review updated successfully");
-        navigate("/myreview");
+        navigate("/dashboard/myreview");
         setDescription("");
       } catch (error) {
         setLoading(false);
         setError(error.message);
       }
     };
-    createService();
+    updateReview();
   };
 
   useEffect(() => {
-    if (data) {
-      setDescription(data.reviewText);
+    if (state) {
+      setDescription(state.reviewText);
     }
-  }, [data]);
+  }, [state]);
   return (
     <div className="lg:w-2/6 md:w-3/6 sm:w-4/6 w-5/6 mx-auto my-10 bg-white p-10 rounded-md">
       <h1 className="text-2xl uppercase font-semibold  text-emerald-800">

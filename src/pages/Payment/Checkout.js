@@ -54,7 +54,7 @@ const Checkout = ({ tour }) => {
   useEffect(() => {
     const getClientSecret = async () => {
       const res = await fetch(
-        "https://travelin-server.vercel.app/api/v1/payment",
+        `${process.env.REACT_APP_DOMAIN_NAME}/api/v1/payment`,
         {
           method: "POST",
           body: JSON.stringify({ price: tour.price }),

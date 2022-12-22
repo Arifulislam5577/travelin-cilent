@@ -1,6 +1,6 @@
 import React from "react";
 import { FiEdit, FiTrash2 } from "react-icons/fi";
-import { Link } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 import TimeAgo from "javascript-time-ago";
 import en from "javascript-time-ago/locale/en";
 const UserReview = (props) => {
@@ -8,6 +8,10 @@ const UserReview = (props) => {
   const timeAgo = new TimeAgo("en-US");
   const { reviewText, userName, UserImg, _id, tour, createdAt } = props?.review;
 
+  const navigate = useNavigate();
+  const handleUpdateReview = (id) => {
+    navigate(`/updatereview/${id}`, { state: props.review });
+  };
   return (
     <div className="col-span-1">
       <div className="overflow-hidden rounded bg-white">
@@ -37,12 +41,12 @@ const UserReview = (props) => {
               </div>
             </div>
             <div className="flex items-center gap-2 text-gray-500 ">
-              <Link
-                to={`/updatereview/${_id}`}
+              <button
+                onClick={() => handleUpdateReview(_id)}
                 className="hover:text-emerald-800"
               >
                 <FiEdit size="20" />
-              </Link>
+              </button>
               <button
                 className="hover:text-red-600"
                 onClick={() => props.handleDeleteReview(_id)}

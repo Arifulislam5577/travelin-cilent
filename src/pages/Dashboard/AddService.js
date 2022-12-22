@@ -1,8 +1,10 @@
 import React, { useState } from "react";
 import { toast } from "react-toastify";
+import { Context } from "../../context/ContextApi";
 import useTitle from "../../hooks/useTitle";
 
 const AddService = () => {
+  const { user } = Context();
   useTitle("Add Service");
   const [loading, setLoading] = useState(false);
   const [serviceName, setServiceName] = useState("");
@@ -19,13 +21,14 @@ const AddService = () => {
         setLoading(true);
 
         const tour = {
+          user: user._id,
           name: serviceName,
           price: servicePrice * 1,
           description: serviceDesc,
           image: serviceImage,
         };
         const response = await fetch(
-          "https://travelin-server.vercel.app/api/v1/tours",
+          `${process.env.REACT_APP_DOMAIN_NAME}/api/v1/tours`,
           {
             method: "POST",
             body: JSON.stringify(tour),

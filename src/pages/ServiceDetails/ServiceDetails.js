@@ -23,18 +23,18 @@ const ServiceDetails = () => {
   const handleSubmit = async (e) => {
     e.preventDefault();
 
-    const createService = async () => {
+    const createReview = async () => {
       try {
         setLoading(true);
         const response = await fetch(
-          `https://travelin-server.vercel.app/api/v1/review`,
+          `${process.env.REACT_APP_DOMAIN_NAME}/api/v1/review`,
           {
             method: "POST",
             body: JSON.stringify({
               tour: tour._id,
-              userId: user.uid,
-              userName: user.displayName,
-              UserImg: user.photoURL,
+              user: user._id,
+              userName: user.userName,
+              UserImg: user.userImg,
               reviewText: description,
             }),
             headers: {
@@ -56,7 +56,7 @@ const ServiceDetails = () => {
         setError(error.message);
       }
     };
-    createService();
+    createReview();
   };
 
   const handleClick = () => {
@@ -166,7 +166,7 @@ const ServiceDetails = () => {
           <div>
             <h2 className="text-xl font-bold text-gray-600">Review</h2>
             <hr className="my-3" />
-            {tourReviews && tourReviews?.length > 0 ? (
+            {tourReviews?.length && tourReviews?.length > 0 ? (
               <div className="my-3">
                 {tourReviews?.map((review) => (
                   <Review key={review?._id} {...review} />

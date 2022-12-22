@@ -64,14 +64,18 @@ const ContextApi = ({ children }) => {
         try {
           const token = await user.getIdToken();
           if (token) {
-            const response = await fetch("http://localhost:5000/api/v1/user", {
-              method: "POST",
-              body: JSON.stringify({}),
-              headers: {
-                "Content-Type": "application/json",
-                authorization: `Bearer ${token}`,
-              },
-            });
+            localStorage.setItem("token", JSON.stringify(token));
+            const response = await fetch(
+              `${process.env.REACT_APP_DOMAIN_NAME}/api/v1/user`,
+              {
+                method: "POST",
+                body: JSON.stringify({}),
+                headers: {
+                  "Content-Type": "application/json",
+                  authorization: `Bearer ${token}`,
+                },
+              }
+            );
             const result = await response.json();
             if (result) {
               const userInfo = {

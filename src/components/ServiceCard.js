@@ -4,10 +4,6 @@ import { Link } from "react-router-dom";
 import { PhotoProvider, PhotoView } from "react-photo-view";
 import "react-photo-view/dist/react-photo-view.css";
 const ServiceCard = (props) => {
-  const imgStyle = {
-    height: 720,
-    width: 1080,
-  };
   return (
     <div className="col-span-1">
       <div className="bg-white rounded overflow-hidden">

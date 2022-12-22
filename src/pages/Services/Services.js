@@ -9,7 +9,7 @@ import useTitle from "../../hooks/useTitle";
 const Services = () => {
   useTitle("Services");
   const { load, error, data } = useFetch(
-    "https://travelin-server.vercel.app/api/v1/tours"
+    `${process.env.REACT_APP_DOMAIN_NAME}/api/v1/tours`
   );
 
   return (

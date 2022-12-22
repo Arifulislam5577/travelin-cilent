@@ -10,7 +10,7 @@ const MyReview = () => {
   const { user } = Context();
   const [reviewData, setReviewData] = useState([]);
   const { load, error, data } = useFetch(
-    `https://travelin-server.vercel.app/api/v1/review?userId=${user.uid}`
+    `${process.env.REACT_APP_DOMAIN_NAME}/api/v1/review?userId=${user._id}`
   );
 
   useEffect(() => {
@@ -19,7 +19,7 @@ const MyReview = () => {
   const handleDeleteReview = async (id) => {
     const createService = async () => {
       const response = await fetch(
-        `https://travelin-server.vercel.app/api/v1/review/${id}`,
+        `${process.env.REACT_APP_DOMAIN_NAME}/api/v1/review/${id}`,
         {
           method: "DELETE",
           body: JSON.stringify(),

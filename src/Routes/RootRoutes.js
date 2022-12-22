@@ -11,7 +11,6 @@ import NotFound from "../pages/NotFound/NotFound";
 import PrivateRoute from "./PrivateRoutes";
 import Payment from "../pages/Payment/Payment";
 import Dashboard from "../pages/Dashboard/Dashboard";
-import Profile from "../pages/Dashboard/Profile";
 import AddService from "../pages/Dashboard/AddService";
 import MyService from "../pages/Dashboard/MyService";
 import MyReview from "../pages/Dashboard/MyReview";
@@ -28,7 +27,9 @@ export const RootRoutes = createBrowserRouter([
         path: "/service/:id",
         element: <ServiceDetails />,
         loader: async ({ params }) =>
-          fetch(`https://travelin-server.vercel.app/api/v1/tours/${params.id}`),
+          fetch(
+            `${process.env.REACT_APP_DOMAIN_NAME}/api/v1/tours/${params.id}`
+          ),
       },
       { path: "/blogs", element: <Blogs /> },
       { path: "/services", element: <Services /> },
@@ -59,8 +60,7 @@ export const RootRoutes = createBrowserRouter([
           </PrivateRoute>
         ),
         children: [
-          { index: true, element: <Profile /> },
-          { path: "addservice", element: <AddService /> },
+          { index: true, element: <AddService /> },
           { path: "myservice", element: <MyService /> },
           { path: "myreview", element: <MyReview /> },
         ],

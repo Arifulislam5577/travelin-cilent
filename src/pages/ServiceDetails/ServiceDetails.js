@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import { BsStarFill } from "react-icons/bs";
 import {
   Link,
@@ -11,6 +11,7 @@ import Review from "../../components/Review";
 import { Context } from "../../context/ContextApi";
 
 const ServiceDetails = () => {
+  const [URL, setURL] = useState("");
   const { user } = Context();
   const { tour, tourReview } = useLoaderData();
   const location = useLocation();
@@ -59,9 +60,38 @@ const ServiceDetails = () => {
     createReview();
   };
 
-  const handleClick = () => {
-    navigate("/payment", { state: tour });
+  const handleClick = async () => {
+    if (user) {
+      const getClientSecret = async () => {
+        const res = await fetch(
+          `${process.env.REACT_APP_DOMAIN_NAME}/api/v1/payment`,
+          {
+            method: "POST",
+            body: JSON.stringify({ price: tour.price, name: tour.name }),
+            headers: {
+              "Content-type": "application/json; charset=UTF-8",
+              authorization: `Bearer ${JSON.parse(
+                localStorage.getItem("token")
+              )}`,
+            },
+          }
+        );
+
+        const result = await res.json();
+        if (result) setURL(result.url);
+      };
+
+      getClientSecret();
+    } else {
+      navigate(`/login?redirect=${location.pathname}`);
+    }
   };
+
+  useEffect(() => {
+    if (URL) {
+      window.location.assign(URL);
+    }
+  }, [URL]);
   return (
     <section className="py-10">
       <div className="container grid grid-cols-1 lg:grid-cols-5 gap-5">
@@ -103,7 +133,7 @@ const ServiceDetails = () => {
               onClick={handleClick}
               className="bg-emerald-800 hover:bg-emerald-900 text-white rounded py-3 px-6"
             >
-              Join the tour
+              Checkout the tour
             </button>
           </div>
         </div>

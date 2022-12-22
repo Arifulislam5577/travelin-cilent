@@ -32,7 +32,7 @@ const Feature = () => {
           </div>
           <div className="">
             <h1 className="text-base font-bold  text-gray-600">
-              Includes medical team
+              Includes Medical Team
             </h1>
             <p className=" text-sm mt-2 text-gray-500 max-w-lg">
               Lorem ipsum dolor sit amet consectetur adipisicing elit. Doloribus

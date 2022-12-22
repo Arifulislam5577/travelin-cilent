@@ -56,27 +56,13 @@ const Header = () => {
           {user ? (
             <>
               <li>
-                <Link
-                  className="text-gray-600 hover:text-emerald-800 transition-all duration-100 hover:border-b-2 border-emerald-800 pb-2"
-                  to="/addservice"
-                >
-                  Add Service
+                <Link to="/dashboard">
+                  <img
+                    src={user?.photoURL}
+                    className="h-10 w-10 rounded-full p-1 bg-gray-100 shadow"
+                    alt={user?.displayName}
+                  />
                 </Link>
-              </li>
-              <li>
-                <Link
-                  className="text-gray-600 hover:text-emerald-800 transition-all duration-100 hover:border-b-2 border-emerald-800 pb-2"
-                  to="/myreview"
-                >
-                  My Review
-                </Link>
-              </li>
-              <li>
-                <img
-                  src={user?.photoURL}
-                  className="h-10 w-10 rounded-full p-1 bg-gray-100 shadow"
-                  alt={user?.displayName}
-                />
               </li>
               <li>
                 <button

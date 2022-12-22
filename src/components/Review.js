@@ -3,7 +3,8 @@ import { BsStarFill, BsReply } from "react-icons/bs";
 import { BiLike, BiDislike } from "react-icons/bi";
 import TimeAgo from "javascript-time-ago";
 import en from "javascript-time-ago/locale/en";
-const Review = ({ UserImg, reviewText, userName, createdAt }) => {
+const Review = (props) => {
+  const { UserImg, reviewText, userName, createdAt } = props;
   TimeAgo.addLocale(en);
   const timeAgo = new TimeAgo("en-US");
 

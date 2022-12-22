@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from "react";
-import { useLoaderData, useParams } from "react-router-dom";
+import { useNavigate, useParams } from "react-router-dom";
 import { toast } from "react-toastify";
 import useFetch from "../../hooks/useFetch";
 const UdpateReview = () => {
@@ -8,6 +8,7 @@ const UdpateReview = () => {
   const [description, setDescription] = useState("");
 
   const { id } = useParams();
+  const navigate = useNavigate();
 
   const { data } = useFetch(
     `https://travelin-server.vercel.app/api/v1/review/${id}`
@@ -38,6 +39,7 @@ const UdpateReview = () => {
         setLoading(false);
         setError("");
         toast.success("Review updated successfully");
+        navigate("/myreview");
         setDescription("");
       } catch (error) {
         setLoading(false);

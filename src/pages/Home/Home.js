@@ -4,6 +4,7 @@ import Feature from "./Feature";
 import Hero from "./Hero";
 import ServicesArea from "./ServicesArea";
 import useTitle from "../../hooks/useTitle";
+
 const Home = () => {
   useTitle("Travelin");
   return (
@@ -12,6 +13,7 @@ const Home = () => {
         <Hero />
         <Feature />
         <ServicesArea />
+
         <CallToAction />
       </div>
     </section>

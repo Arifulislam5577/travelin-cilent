@@ -6,12 +6,15 @@ import SignIn from "../pages/SignIn/SignIn";
 import ServiceDetails from "../pages/ServiceDetails/ServiceDetails";
 import Blogs from "../pages/Blogs/Blogs";
 import Services from "../pages/Services/Services";
-import MyReview from "../pages/MyReview/MyReview";
-import AddService from "../pages/AddService/AddService";
 import UdpateReview from "../pages/MyReview/UdpateReview";
 import NotFound from "../pages/NotFound/NotFound";
 import PrivateRoute from "./PrivateRoutes";
 import Payment from "../pages/Payment/Payment";
+import Dashboard from "../pages/Dashboard/Dashboard";
+import Profile from "../pages/Dashboard/Profile";
+import AddService from "../pages/Dashboard/AddService";
+import MyService from "../pages/Dashboard/MyService";
+import MyReview from "../pages/Dashboard/MyReview";
 
 export const RootRoutes = createBrowserRouter([
   {
@@ -37,23 +40,7 @@ export const RootRoutes = createBrowserRouter([
           </PrivateRoute>
         ),
       },
-      {
-        path: "/myreview",
 
-        element: (
-          <PrivateRoute>
-            <MyReview />
-          </PrivateRoute>
-        ),
-      },
-      {
-        path: "/addservice",
-        element: (
-          <PrivateRoute>
-            <AddService />
-          </PrivateRoute>
-        ),
-      },
       {
         path: "/updatereview/:id",
 
@@ -62,6 +49,21 @@ export const RootRoutes = createBrowserRouter([
             <UdpateReview />
           </PrivateRoute>
         ),
+      },
+      {
+        path: "/dashboard",
+
+        element: (
+          <PrivateRoute>
+            <Dashboard />
+          </PrivateRoute>
+        ),
+        children: [
+          { index: true, element: <Profile /> },
+          { path: "addservice", element: <AddService /> },
+          { path: "myservice", element: <MyService /> },
+          { path: "myreview", element: <MyReview /> },
+        ],
       },
       { path: "*", element: <NotFound /> },
     ],

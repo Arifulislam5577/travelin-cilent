@@ -59,9 +59,33 @@ const ContextApi = ({ children }) => {
   };
 
   useEffect(() => {
-    const subscribe = onAuthStateChanged(auth, (user) => {
+    const subscribe = onAuthStateChanged(auth, async (user) => {
       if (user) {
-        setUser(user);
+        try {
+          const token = await user.getIdToken();
+          if (token) {
+            const response = await fetch("http://localhost:5000/api/v1/user", {
+              method: "POST",
+              body: JSON.stringify({}),
+              headers: {
+                "Content-Type": "application/json",
+                authorization: `Bearer ${token}`,
+              },
+            });
+            const result = await response.json();
+            if (result) {
+              const userInfo = {
+                ...result,
+                userName: user?.displayName,
+                userImg: user?.photoURL,
+              };
+              setUser(userInfo);
+            }
+          }
+        } catch (error) {
+          console.log(error);
+          setUser(null);
+        }
         setLoader(false);
       } else {
         setUser(null);

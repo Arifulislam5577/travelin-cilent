@@ -73,7 +73,7 @@ const AddService = () => {
       {error && <p className="p-2 bg-red-200 text-gray-900 my-3 ">⚠️{error}</p>}
       <form className=" mt-5" onSubmit={handleSubmit}>
         <div className="grid grid-cols-1 lg:lg:grid-cols-2 gap-5">
-          <div className="mb-5 col-span-1">
+          <div className="mb-3 col-span-1">
             <label htmlFor="name" className="block mb-2 text-gray-500 text-sm ">
               Service Name
             </label>
@@ -88,7 +88,7 @@ const AddService = () => {
               placeholder="service name"
             />
           </div>
-          <div className="mb-5 col-span-1">
+          <div className="mb-3 col-span-1">
             <label htmlFor="price" className="block mb-2 text-gray-500 text-sm">
               Service Price
             </label>
@@ -103,7 +103,7 @@ const AddService = () => {
             />
           </div>
         </div>
-        <div className="mb-5 col-span-2">
+        <div className="mb-3 col-span-2">
           <label htmlFor="img" className="block mb-2 text-gray-500  text-sm">
             Service Image
           </label>
@@ -116,7 +116,7 @@ const AddService = () => {
             placeholder="service image"
           />
         </div>
-        <div className="mb-5 col-span-2">
+        <div className="mb-3 col-span-2">
           <label
             htmlFor="Description"
             className="block mb-2 text-gray-500 text-sm"

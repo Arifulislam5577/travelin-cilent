@@ -14,10 +14,10 @@ const UserReview = (props) => {
         <img src={tour?.image} alt="tour" className="block cursor-pointer" />
 
         <div className="p-5">
-          <h1 className="font-bold mb-2 text-base lg:text-xl text-gray-600 capitalize">
+          <h1 className="font-bold mb-2 text-base  text-gray-600 capitalize">
             {tour?.name}
           </h1>
-          <p className="text-gray-400 pl-5 border-l-2 border-gray-200 text-sm mb-3">
+          <p className="text-gray-400 text-xs pl-5 border-l-2 border-gray-200  mb-3">
             {reviewText}
           </p>
           <div className="flex items-center justify-between">

@@ -58,9 +58,9 @@ const Header = () => {
               <li>
                 <Link to="/dashboard">
                   <img
-                    src={user?.photoURL}
+                    src={user?.userImg}
                     className="h-10 w-10 rounded-full p-1 bg-gray-100 shadow"
-                    alt={user?.displayName}
+                    alt={user?.userName}
                   />
                 </Link>
               </li>

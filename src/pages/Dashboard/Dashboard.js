@@ -9,18 +9,19 @@ const Dashboard = () => {
     { id: 2, title: "Add Service", path: "/dashboard" },
     { id: 3, title: "My Service", path: "/dashboard/myservice" },
     { id: 4, title: "My Review", path: "/dashboard/myreview" },
+    { id: 1, title: "Booked Service", path: "/dashboard/bookedservice" },
   ];
   return (
     <section className="py-10">
       <div className="container">
         <div className="grid grid-cols-1 lg:grid-cols-4 gap-5">
           <div className="lg:col-span-1 w-full">
-            <div className="p-5 bg-white shadow rounded">
+            <div className="p-5 bg-emerald-50 shadow">
               <div className="mx-auto w-full">
                 <img
                   src={user?.userImg}
                   alt={user?.userName}
-                  className="rounded-full h-20 w-20 mx-auto"
+                  className="rounded-full border-2 border-emerald-200 h-20 w-20 mx-auto"
                 />
               </div>
               <div className="py-3">

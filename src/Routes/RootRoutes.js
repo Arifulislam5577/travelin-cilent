@@ -13,6 +13,7 @@ import Dashboard from "../pages/Dashboard/Dashboard";
 import AddService from "../pages/Dashboard/AddService";
 import MyService from "../pages/Dashboard/MyService";
 import MyReview from "../pages/Dashboard/MyReview";
+import BookedService from "../pages/Dashboard/BookedService";
 
 export const RootRoutes = createBrowserRouter([
   {
@@ -53,6 +54,7 @@ export const RootRoutes = createBrowserRouter([
           { index: true, element: <AddService /> },
           { path: "myservice", element: <MyService /> },
           { path: "myreview", element: <MyReview /> },
+          { path: "bookedservice", element: <BookedService /> },
         ],
       },
       { path: "*", element: <NotFound /> },

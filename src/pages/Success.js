@@ -1,6 +1,43 @@
-import React from "react";
-
+import React, { useEffect } from "react";
+import { useLocation, useNavigate } from "react-router-dom";
 const Success = () => {
+  const { search } = useLocation();
+  const navigate = useNavigate();
+  const sessionToken = search?.split("=")[1];
+
+  useEffect(() => {
+    const updatePaymentStatus = async () => {
+      try {
+        const response = await fetch(
+          `${process.env.REACT_APP_DOMAIN_NAME}/api/v1/payment/updatePaid?sessionToken=${sessionToken}`,
+          {
+            method: "GET",
+            headers: {
+              "Content-Type": "application/json",
+              authorization: `Bearer ${JSON.parse(
+                localStorage.getItem("token")
+              )}`,
+            },
+          }
+        );
+
+        const result = await response.json();
+
+        if (result.status === "paid") {
+          const timer = setTimeout(
+            () => navigate("/dashboard/bookedservice"),
+            5000
+          );
+
+          return () => clearTimeout(timer);
+        }
+      } catch (error) {
+        console.log(error);
+      }
+    };
+    updatePaymentStatus();
+  }, [sessionToken, navigate]);
+
   return (
     <div className=" lg:py-20 py-5">
       <div className=" md:mx-auto">

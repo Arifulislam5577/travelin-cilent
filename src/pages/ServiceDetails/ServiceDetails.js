@@ -1,6 +1,11 @@
 import React, { useState } from "react";
 import { BsStarFill } from "react-icons/bs";
-import { Link, useLoaderData, useLocation } from "react-router-dom";
+import {
+  Link,
+  useLoaderData,
+  useLocation,
+  useNavigate,
+} from "react-router-dom";
 import { toast } from "react-toastify";
 import Review from "../../components/Review";
 import { Context } from "../../context/ContextApi";
@@ -53,8 +58,10 @@ const ServiceDetails = () => {
     createReview();
   };
 
+  const navigate = useNavigate();
+
   const handleBookedTour = async () => {
-    // BOOKING THE TOUR
+    navigate(`/booked`, { state: tour });
   };
 
   return (

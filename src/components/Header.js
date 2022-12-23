@@ -60,7 +60,7 @@ const Header = () => {
                   <img
                     src={user?.userImg}
                     className="h-10 w-10 rounded-full p-1 bg-gray-100 shadow"
-                    alt={user?.userName}
+                    alt={user?.displayName}
                   />
                 </Link>
               </li>
@@ -128,30 +128,13 @@ const Header = () => {
               </li>
               {user ? (
                 <>
-                  <li>
-                    <Link
-                      className="text-gray-600 hover:text-emerald-800 transition-all duration-100 hover:border-b-2 border-emerald-800 pb-2"
-                      to="/addservice"
-                    >
-                      Add Service
-                    </Link>
-                  </li>
-                  <li>
-                    <Link
-                      className="text-gray-600 hover:text-emerald-800 transition-all duration-100 hover:border-b-2 border-emerald-800 pb-2"
-                      to="/myreview"
-                    >
-                      My Review
-                    </Link>
-                  </li>
-
-                  <li>
+                  <Link to="/dashboard">
                     <img
-                      src={user?.photoURL}
+                      src={user?.userImg}
                       className="h-10 w-10 rounded-full p-1 bg-gray-100 shadow"
-                      alt={user?.displayName}
+                      alt={user?.userName}
                     />
-                  </li>
+                  </Link>
                   <li>
                     <button
                       className="py-2 px-6 bg-emerald-800 hover:bg-emerald-900 text-white text-sm rounded flex items-center gap-1"

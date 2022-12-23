@@ -15,6 +15,7 @@ import MyService from "../pages/Dashboard/MyService";
 import MyReview from "../pages/Dashboard/MyReview";
 import BookedService from "../pages/Dashboard/BookedService";
 import Success from "../pages/Success";
+import Booked from "../pages/Booked/Booked";
 
 export const RootRoutes = createBrowserRouter([
   {
@@ -41,6 +42,15 @@ export const RootRoutes = createBrowserRouter([
         element: (
           <PrivateRoute>
             <UdpateReview />
+          </PrivateRoute>
+        ),
+      },
+      {
+        path: "/booked",
+
+        element: (
+          <PrivateRoute>
+            <Booked />
           </PrivateRoute>
         ),
       },

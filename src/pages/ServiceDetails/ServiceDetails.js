@@ -1,21 +1,14 @@
-import React, { useEffect, useState } from "react";
+import React, { useState } from "react";
 import { BsStarFill } from "react-icons/bs";
-import {
-  Link,
-  useLoaderData,
-  useLocation,
-  useNavigate,
-} from "react-router-dom";
+import { Link, useLoaderData, useLocation } from "react-router-dom";
 import { toast } from "react-toastify";
 import Review from "../../components/Review";
 import { Context } from "../../context/ContextApi";
 
 const ServiceDetails = () => {
-  const [URL, setURL] = useState("");
   const { user } = Context();
   const { tour, tourReview } = useLoaderData();
   const location = useLocation();
-  const navigate = useNavigate();
   const [tourReviews, setTourReviews] = useState(tourReview);
   const [description, setDescription] = useState("");
   const [loading, setLoading] = useState(false);
@@ -60,38 +53,10 @@ const ServiceDetails = () => {
     createReview();
   };
 
-  const handleClick = async () => {
-    if (user) {
-      const getClientSecret = async () => {
-        const res = await fetch(
-          `${process.env.REACT_APP_DOMAIN_NAME}/api/v1/payment`,
-          {
-            method: "POST",
-            body: JSON.stringify({ price: tour.price, name: tour.name }),
-            headers: {
-              "Content-type": "application/json; charset=UTF-8",
-              authorization: `Bearer ${JSON.parse(
-                localStorage.getItem("token")
-              )}`,
-            },
-          }
-        );
-
-        const result = await res.json();
-        if (result) setURL(result.url);
-      };
-
-      getClientSecret();
-    } else {
-      navigate(`/login?redirect=${location.pathname}`);
-    }
+  const handleBookedTour = async () => {
+    // BOOKING THE TOUR
   };
 
-  useEffect(() => {
-    if (URL) {
-      window.location.assign(URL);
-    }
-  }, [URL]);
   return (
     <section className="py-10">
       <div className="container grid grid-cols-1 lg:grid-cols-5 gap-5">
@@ -130,7 +95,7 @@ const ServiceDetails = () => {
             </div>
             <hr className="my-3" />
             <button
-              onClick={handleClick}
+              onClick={handleBookedTour}
               className="bg-emerald-800 hover:bg-emerald-900 text-white rounded py-3 px-6"
             >
               Checkout the tour

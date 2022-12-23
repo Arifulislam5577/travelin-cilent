@@ -14,6 +14,7 @@ import AddService from "../pages/Dashboard/AddService";
 import MyService from "../pages/Dashboard/MyService";
 import MyReview from "../pages/Dashboard/MyReview";
 import BookedService from "../pages/Dashboard/BookedService";
+import Success from "../pages/Success";
 
 export const RootRoutes = createBrowserRouter([
   {
@@ -23,6 +24,7 @@ export const RootRoutes = createBrowserRouter([
       { index: true, element: <Home /> },
       { path: "/login", element: <Login /> },
       { path: "/signin", element: <SignIn /> },
+      { path: "/success", element: <Success /> },
       {
         path: "/service/:id",
         element: <ServiceDetails />,

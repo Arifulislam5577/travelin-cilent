@@ -5,6 +5,8 @@ const Success = () => {
   const navigate = useNavigate();
   const sessionToken = search?.split("=")[1];
 
+  console.log({ sessionToken });
+
   useEffect(() => {
     const updatePaymentStatus = async () => {
       try {
@@ -22,8 +24,7 @@ const Success = () => {
         );
 
         const result = await response.json();
-
-        if (result.status === "paid") {
+        if (result?.status) {
           const timer = setTimeout(
             () => navigate("/dashboard/bookedservice"),
             5000
